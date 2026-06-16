@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,16 +20,12 @@ public class Scheda {
     private Long id;
 
     private String nome;
+    private String descrizione;
 
-    // Gestione dei giorni della settimana (array di interi mapped come collection)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "scheda_id")
+    private List<Esercizio> esercizi = new ArrayList<>();
+
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "scheda_giorni", joinColumns = @JoinColumn(name = "scheda_id"))
-    @Column(name = "giorno")
-    private List<Integer> giorniSettimana;
-
-    // Relazione: Una scheda ha molti esercizi.
-    // ALL cascata significa che se elimini/salvi una scheda, si aggiornano anche i suoi esercizi.
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "scheda_id") // Crea la chiave esterna nella tabella esercizi
-    private List<Esercizio> esercizi;
+    private List<Integer> giorniSettimana = new ArrayList<>();
 }

@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-@Entity // Dice a Java che questa classe è una tabella del database
+@Entity
 @Table(name = "esercizi")
-@Data // Genera getter, setter, toString e equals automaticamente via Lombok
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Esercizio {
