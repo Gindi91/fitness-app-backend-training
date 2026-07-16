@@ -40,8 +40,9 @@ public class FitnessAppBackendApplication {
             schedaRepo.save(gambe);
 
             // 2. Nuovi Dati Alimenti (Rinominati)
-            alimentoRepo.save(new Alimento(null, "Riso e Pollo", 300, 35, 60, 5, 0, LocalDate.now(), "Pranzo"));
-            alimentoRepo.save(new Alimento(null, "Fage Total 0%", 200, 20, 6, 0, 0, LocalDate.now(), "Colazione"));
+            alimentoRepo.save(new Alimento(null, "Riso e Pollo", 300, 12, 20, 2, 146, LocalDate.now(), "Pranzo"));
+            alimentoRepo.save(new Alimento(null, "Fage Total 0%", 200, 10, 3, 0, 52, LocalDate.now(), "Colazione"));
+
 
             // 3. Nuovi Dati Pesi (Rinominati)
             pesoRepo.save(new Peso(null, LocalDate.now().minusDays(2), 80.5));
